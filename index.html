@@ -1,0 +1,94 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Birthday Invitation</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 320px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  animation: pop 0.7s ease;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+h2 { margin-bottom: 10px; }
+p { margin: 6px 0; }
+
+input {
+  width: 90%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  background: #ff8c42;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #ff6b00;
+}
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🎉 Birthday Invitation 🎉</h2>
+    <p>You are invited to my birthday on <strong>30 Nov</strong>.</p>
+    <p>You can come anytime. Please avoid loud noise.</p><input type="text" id="nameInput" placeholder="Enter your name" />
+<button onclick="checkInvite()">Check Invitation</button>
+
+<div id="result"></div>
+
+  </div>  <script>
+    const invited = ["Sarika", "Sandeep", "Sadikshya", "Pratik", "biraj"];
+
+    function checkInvite() {
+      const name = document.getElementById("nameInput").value.trim();
+      const result = document.getElementById("result");
+
+      if (!name) {
+        result.textContent = "Please enter a name.";
+        result.style.color = "red";
+        return;
+      }
+
+      if (invited.includes(name)) {
+        result.textContent = `Yes ${name}, you are invited! 🎉`;
+        result.style.color = "green";
+      } else {
+        result.textContent = `Sorry ${name}, you are not on the list.`;
+        result.style.color = "red";
+      }
+    }
+  </script></body>
+</html>
