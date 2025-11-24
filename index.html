@@ -1,94 +1,325 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Birthday Invitation</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ffecd2, #fcb69f);
-      height: 100vh;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 320px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  animation: pop 0.7s ease;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Invitation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-@keyframes pop {
-  0% { transform: scale(0.5); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-h2 { margin-bottom: 10px; }
-p { margin: 6px 0; }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            animation: slideIn 0.8s ease-out;
+        }
 
-input {
-  width: 90%;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-}
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border: none;
-  background: #ff8c42;
-  color: white;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        .balloons {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
 
-button:hover {
-  background: #ff6b00;
-}
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
 
-#result {
-  margin-top: 15px;
-  font-weight: bold;
-}
+        h1 {
+            text-align: center;
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 32px;
+            animation: fadeIn 1s ease-in;
+        }
 
-  </style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .invitation-card, .error-message {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .invitation-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .invitation-card h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .invitation-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .date-highlight {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+
+        .error-message {
+            background: #ff6b6b;
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f0f;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .rules {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .rules h3 {
+            color: #856404;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .rules ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules li {
+            color: #856404;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .rules li:before {
+            content: "🎵";
+            position: absolute;
+            left: 0;
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <h2>🎉 Birthday Invitation 🎉</h2>
-    <p>You are invited to my birthday on <strong>30 Nov</strong>.</p>
-    <p>You can come anytime. Please avoid loud noise.</p><input type="text" id="nameInput" placeholder="Enter your name" />
-<button onclick="checkInvite()">Check Invitation</button>
+    <div class="container">
+        <div class="balloons">🎈🎉🎂🎁🎊</div>
+        <h1>Birthday Party Invitation</h1>
+        
+        <div class="input-group">
+            <label for="nameInput">Enter Your Name:</label>
+            <input type="text" id="nameInput" placeholder="Your name here..." />
+        </div>
+        
+        <button onclick="checkInvitation()">Check Invitation</button>
+        
+        <div id="result" class="hidden"></div>
+    </div>
 
-<div id="result"></div>
+    <script>
+        const invitedGuests = ['Sarika', 'Sandeep', 'Sadikshya', 'Pratik', 'Biraj'];
 
-  </div>  <script>
-    const invited = ["Sarika", "Sandeep", "Sadikshya", "Pratik", "biraj"];
+        function checkInvitation() {
+            const nameInput = document.getElementById('nameInput');
+            const result = document.getElementById('result');
+            const name = nameInput.value.trim();
 
-    function checkInvite() {
-      const name = document.getElementById("nameInput").value.trim();
-      const result = document.getElementById("result");
+            if (name === '') {
+                result.className = 'error-message';
+                result.innerHTML = '⚠️ Please enter your name!';
+                result.classList.remove('hidden');
+                return;
+            }
 
-      if (!name) {
-        result.textContent = "Please enter a name.";
-        result.style.color = "red";
-        return;
-      }
+            const isInvited = invitedGuests.some(guest => 
+                guest.toLowerCase() === name.toLowerCase()
+            );
 
-      if (invited.includes(name)) {
-        result.textContent = `Yes ${name}, you are invited! 🎉`;
-        result.style.color = "green";
-      } else {
-        result.textContent = `Sorry ${name}, you are not on the list.`;
-        result.style.color = "red";
-      }
-    }
-  </script></body>
+            result.classList.remove('hidden');
+
+            if (isInvited) {
+                result.className = 'invitation-card';
+                result.innerHTML = `
+                    <h2>🎉 Yay! You're Invited! 🎉</h2>
+                    <p>Dear <strong>${name}</strong>,</p>
+                    <p>You are cordially invited to celebrate my birthday!</p>
+                    <div class="date-highlight">📅 November 30th</div>
+                    <p>⏰ Come anytime that suits you!</p>
+                    <p>📍 Looking forward to celebrating with you!</p>
+                    <div class="rules">
+                        <h3>🤫 Important Note:</h3>
+                        <ul>
+                            <li>Please keep noise levels down</li>
+                            <li>Let's have a peaceful celebration</li>
+                            <li>Quiet fun is still fun! 😊</li>
+                        </ul>
+                    </div>
+                `;
+                createConfetti();
+            } else {
+                result.className = 'error-message';
+                result.innerHTML = `
+                    <p>😔 Sorry ${name},</p>
+                    <p>You are not on the guest list for this party.</p>
+                `;
+            }
+        }
+
+        function createConfetti() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#f7dc6f', '#bb8fce'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 3 + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkInvitation();
+            }
+        });
+    </script>
+</body>
 </html>
