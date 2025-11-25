@@ -242,7 +242,7 @@
         <h1>Birthday Party Invitation</h1>
         
         <div class="input-group">
-            <label for="nameInput">Enter Your First Name or Nickname with with Abhinav calls you:</label>
+            <label for="nameInput">Enter Your First Name or Nickname with Abhinav calls you:</label>
             <input type="text" id="nameInput" placeholder="Your name here..." />
         </div>
         
@@ -253,7 +253,8 @@
 
     <script>
         const invitedGuests = ['Sarika', 'Sandep', 'Sadikshya', 'Pratik', 'Prateek', 'Prince','Jefflish','Vaseline','Chandraa', 'Biraj'];
-        const amore = ['Jefflish','Vaseline','Chandraa']
+        const amore = ['Jefflish','Vaseline','Chandraa'];
+        
         function checkInvitation() {
             const nameInput = document.getElementById('nameInput');
             const result = document.getElementById('result');
@@ -269,34 +270,36 @@
             const isInvited = invitedGuests.some(guest => 
                 guest.toLowerCase() === name.toLowerCase()
             );
-            const love = name.some(guest => 
+            const isLove = amore.some(guest => 
                 guest.toLowerCase() === name.toLowerCase()
             );
 
             result.classList.remove('hidden');
 
-            if ( love ){
+            if (isLove) {
                 result.className = 'invitation-card';
                 result.innerHTML = `
-                    <h2>🎉 Yay! You're Invited! 🎉</h2>
-                    <p>Dear <strong>${name}</strong>,</p>
-                    <p>You are cordially invited to celebrate my birthday!</p>
-                    <div class="date-highlight">📅 November 30th</div>
-                    <div class="date-highlight">My love due to some problems that its hard to attend it youre truely invited at 📅 November 29th as well and even if you can come at 30th please don&apos;t forget 29th my love.</div>
-                    <p>⏰ Come anytime that suits you!</p>
-                    <p>📍 Looking forward to celebrating with you!</p>
+                    <h2>💝 My Dearest ${name}! 💝</h2>
+                    <p style="font-size: 18px; margin-bottom: 15px;">My beloved <strong>${name}</strong>,</p>
+                    <p style="font-size: 17px; line-height: 1.8;">With all my heart, I'm inviting you to celebrate this special day with me. Your presence would make everything complete and fill my heart with so much joy! 💕</p>
+                    <div class="date-highlight" style="background: rgba(255, 255, 255, 0.3);">✨ November 29th - A Day Just For Us ✨</div>
+                    <p style="font-size: 16px; font-style: italic; margin: 15px 0;">My love, I know things might be difficult for you on the 30th, so I'm especially inviting you to come on the 29th. This day is reserved just for you, my darling. Your presence means the world to me! 🌹</p>
+                    <div class="date-highlight">🎂 November 30th - Main Celebration 🎂</div>
+                    <p style="font-size: 16px; margin-top: 15px;"><strong>And my dearest, even if you can join us on the 30th, please don't forget about our special time on the 29th. I'm eagerly waiting to see you, my love! 💖</strong></p>
+                    <p style="font-size: 16px; margin-top: 20px;">⏰ Come whenever your heart desires, you'll always be welcomed with open arms!</p>
+                    <p style="font-size: 16px;">📍 Can't wait to celebrate with you, my precious one!</p>
                     <div class="rules">
-                        <h3>🤫 Important Note:</h3>
+                        <h3>💕 A Little Note, With Love:</h3>
                         <ul>
-                            <li>Please keep noise levels down</li>
-                            <li>Let's have a peaceful celebration</li>
-                            <li>Quiet fun is still fun! 😊</li>
+                            <li>Let's keep things peaceful and intimate</li>
+                            <li>A quiet celebration makes our moments together even more special</li>
+                            <li>Your presence is the only gift I need! 🥰</li>
                         </ul>
                     </div>
+                    <p style="font-size: 18px; margin-top: 20px; font-weight: bold; color: #fff;">You mean everything to me. Please come! 💗✨</p>
                 `;
                 createConfetti();
-            }
-            else if (isInvited) {
+            } else if (isInvited) {
                 result.className = 'invitation-card';
                 result.innerHTML = `
                     <h2>🎉 Yay! You're Invited! 🎉</h2>
