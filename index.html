@@ -253,7 +253,7 @@
 
     <script>
         const invitedGuests = ['Sarika', 'Sandep', 'Sadikshya', 'Pratik', 'Prateek', 'Prince','Jefflish','Vaseline','Chandraa', 'Biraj'];
-
+        const amore = ['Jefflish','Vaseline','Chandraa']
         function checkInvitation() {
             const nameInput = document.getElementById('nameInput');
             const result = document.getElementById('result');
@@ -269,10 +269,34 @@
             const isInvited = invitedGuests.some(guest => 
                 guest.toLowerCase() === name.toLowerCase()
             );
+            const love = name.some(guest => 
+                guest.toLowerCase() === name.toLowerCase()
+            );
 
             result.classList.remove('hidden');
 
-            if (isInvited) {
+            if ( love ){
+                result.className = 'invitation-card';
+                result.innerHTML = `
+                    <h2>🎉 Yay! You're Invited! 🎉</h2>
+                    <p>Dear <strong>${name}</strong>,</p>
+                    <p>You are cordially invited to celebrate my birthday!</p>
+                    <div class="date-highlight">📅 November 30th</div>
+                    <div class="date-highlight">My love due to some problems that its hard to attend it youre truely invited at 📅 November 29th as well and even if you can come at 30th please don&apos;t forget 29th my love.</div>
+                    <p>⏰ Come anytime that suits you!</p>
+                    <p>📍 Looking forward to celebrating with you!</p>
+                    <div class="rules">
+                        <h3>🤫 Important Note:</h3>
+                        <ul>
+                            <li>Please keep noise levels down</li>
+                            <li>Let's have a peaceful celebration</li>
+                            <li>Quiet fun is still fun! 😊</li>
+                        </ul>
+                    </div>
+                `;
+                createConfetti();
+            }
+            else if (isInvited) {
                 result.className = 'invitation-card';
                 result.innerHTML = `
                     <h2>🎉 Yay! You're Invited! 🎉</h2>
